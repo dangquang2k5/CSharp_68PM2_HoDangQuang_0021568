@@ -1,0 +1,38 @@
+## --- Visual Studio ---
+## Loại bỏ các thư mục biên dịch (Build outputs)
+[Bb]in/
+[Oo]bj/
+[Gg]enerated/
+
+## Loại bỏ thư mục cấu hình cá nhân của Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+
+## Loại bỏ các file dữ liệu và cache
+*.suo
+*.user
+*.cache
+*.pdb
+*.opendb
+*.ide
+*.VC.db
+
+## --- NuGet Packages ---
+## Không lưu các thư viện tải về vì có thể khôi phục bằng NuGet restore
+packages/
+!packages/repositories.config
+
+## --- OS/System ---
+## Loại bỏ các file rác của hệ điều hành
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+## --- Temporary/Logs ---
+## Loại bỏ các file log và file tạm
+*.log
+*.tmp
+*.temp
