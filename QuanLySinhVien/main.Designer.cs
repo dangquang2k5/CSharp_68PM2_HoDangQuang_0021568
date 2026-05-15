@@ -54,7 +54,7 @@
             this.tieuDe.ForeColor = System.Drawing.SystemColors.Highlight;
             this.tieuDe.Location = new System.Drawing.Point(77, 42);
             this.tieuDe.Name = "tieuDe";
-            this.tieuDe.Size = new System.Drawing.Size(626, 52);
+            this.tieuDe.Size = new System.Drawing.Size(620, 51);
             this.tieuDe.TabIndex = 1;
             this.tieuDe.Text = "Hệ thống đăng nhập sinh viên";
             this.tieuDe.Click += new System.EventHandler(this.label1_Click);
