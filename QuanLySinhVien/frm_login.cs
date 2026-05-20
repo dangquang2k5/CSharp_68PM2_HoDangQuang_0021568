@@ -10,45 +10,35 @@ using System.Windows.Forms;
 
 namespace QuanLySinhVien
 {
-    public partial class main : Form
+    public partial class frm_login : Form
     {
-        public main()
+        public frm_login()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
             string username = txt_Username.Text;
             string password = txt_Password.Text;
+
             if (username == "0021568@st.huce.edu.vn" && password == "0021568")
             {
                 MessageBox.Show("Đăng nhập thành công!");
-            }    
+
+                frm_main formMain = new frm_main();
+
+                this.Hide();
+
+                formMain.ShowDialog();
+
+                this.Close();
+            }
             else
             {
-                MessageBox.Show("Đăng nhập thất bại!");
+                MessageBox.Show("Đăng nhập thất bại! Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.");
             }
         }
     }
+    
 }

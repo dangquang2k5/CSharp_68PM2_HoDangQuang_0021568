@@ -1,6 +1,6 @@
 ﻿namespace QuanLySinhVien
 {
-    partial class main
+    partial class frm_login
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,6 @@
             this.tieuDe.Size = new System.Drawing.Size(620, 51);
             this.tieuDe.TabIndex = 1;
             this.tieuDe.Text = "Hệ thống đăng nhập sinh viên";
-            this.tieuDe.Click += new System.EventHandler(this.label1_Click);
             // 
             // Username
             // 
@@ -83,7 +82,6 @@
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.Size = new System.Drawing.Size(304, 22);
             this.txt_Username.TabIndex = 4;
-            this.txt_Username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txt_Password
             // 
@@ -92,22 +90,20 @@
             this.txt_Password.PasswordChar = '*';
             this.txt_Password.Size = new System.Drawing.Size(304, 22);
             this.txt_Password.TabIndex = 5;
-            this.txt_Password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // main
+            // frm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(736, 308);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_Username);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Username);
             this.Controls.Add(this.tieuDe);
             this.Controls.Add(this.btn_Login);
-            this.Name = "main";
+            this.Name = "frm_login";
             this.Text = "Hệ thống đăng nhập sinh viên";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
