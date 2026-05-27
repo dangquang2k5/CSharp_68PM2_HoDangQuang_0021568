@@ -48,7 +48,7 @@
             this.btn_chuyendentrangtiep_qlsv = new System.Windows.Forms.Button();
             this.btn_chuyendentrangcuoi_qlsv = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_qlsv = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +59,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.grb_ttsv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_refresh_qlsv
@@ -121,6 +121,7 @@
             this.btn_add_qlsv.TabIndex = 20;
             this.btn_add_qlsv.Text = "Thêm";
             this.btn_add_qlsv.UseVisualStyleBackColor = false;
+            this.btn_add_qlsv.Click += new System.EventHandler(this.btn_add_qlsv_Click);
             // 
             // grb_ttsv
             // 
@@ -144,6 +145,7 @@
             // 
             // cbb_lop
             // 
+            this.cbb_lop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_lop.FormattingEnabled = true;
             this.cbb_lop.Location = new System.Drawing.Point(39, 334);
             this.cbb_lop.Name = "cbb_lop";
@@ -152,7 +154,11 @@
             // 
             // cbb_gioitinh
             // 
+            this.cbb_gioitinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_gioitinh.FormattingEnabled = true;
+            this.cbb_gioitinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
             this.cbb_gioitinh.Location = new System.Drawing.Point(39, 261);
             this.cbb_gioitinh.Name = "cbb_gioitinh";
             this.cbb_gioitinh.Size = new System.Drawing.Size(277, 24);
@@ -180,6 +186,7 @@
             // 
             // txt_mssv
             // 
+            this.txt_mssv.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_mssv.Location = new System.Drawing.Point(39, 56);
             this.txt_mssv.Name = "txt_mssv";
             this.txt_mssv.Size = new System.Drawing.Size(277, 22);
@@ -227,6 +234,7 @@
             // 
             // txt_hvt
             // 
+            this.txt_hvt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_hvt.Location = new System.Drawing.Point(39, 123);
             this.txt_hvt.Name = "txt_hvt";
             this.txt_hvt.Size = new System.Drawing.Size(277, 22);
@@ -286,51 +294,56 @@
             this.dataGridView2.Size = new System.Drawing.Size(10, 10);
             this.dataGridView2.TabIndex = 14;
             // 
-            // dataGridView1
+            // dgv_qlsv
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_qlsv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_qlsv.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_qlsv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_qlsv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(412, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 530);
-            this.dataGridView1.TabIndex = 13;
+            this.dgv_qlsv.Location = new System.Drawing.Point(412, 92);
+            this.dgv_qlsv.Name = "dgv_qlsv";
+            this.dgv_qlsv.RowHeadersVisible = false;
+            this.dgv_qlsv.RowHeadersWidth = 51;
+            this.dgv_qlsv.RowTemplate.Height = 24;
+            this.dgv_qlsv.Size = new System.Drawing.Size(753, 530);
+            this.dgv_qlsv.TabIndex = 13;
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "id";
             this.Column1.HeaderText = "Mã SV";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "hoten";
             this.Column2.HeaderText = "Họ và tên";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "gioitinh";
             this.Column3.HeaderText = "Giới tính";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "ngaysinh";
             this.Column4.HeaderText = "Ngày sinh";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
+            this.Column5.DataPropertyName = "malop";
             this.Column5.HeaderText = "Lớp";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -380,16 +393,17 @@
             this.Controls.Add(this.btn_add_qlsv);
             this.Controls.Add(this.grb_ttsv);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_qlsv);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_search_qlsv);
             this.Controls.Add(this.textBox1);
             this.Name = "uc_qlsv";
             this.Size = new System.Drawing.Size(1200, 750);
+            this.Load += new System.EventHandler(this.uc_qlsv_Load);
             this.grb_ttsv.ResumeLayout(false);
             this.grb_ttsv.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,14 +431,14 @@
         private System.Windows.Forms.Button btn_chuyendentrangtiep_qlsv;
         private System.Windows.Forms.Button btn_chuyendentrangcuoi_qlsv;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_qlsv;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_search_qlsv;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_search_qlsv;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

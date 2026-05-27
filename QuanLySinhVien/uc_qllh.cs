@@ -18,9 +18,5 @@ namespace QuanLySinhVien
         }
 
 
-
-
-
-
     }
 }

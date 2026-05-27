@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_qllh = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +56,7 @@
             this.btn_search_qlsv = new System.Windows.Forms.Button();
             this.btn_xemdssv_qllh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qllh)).BeginInit();
             this.grb_ttsv.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,23 +70,23 @@
             this.dataGridView2.Size = new System.Drawing.Size(10, 10);
             this.dataGridView2.TabIndex = 29;
             // 
-            // dataGridView1
+            // dgv_qllh
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_qllh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_qllh.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_qllh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_qllh.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(412, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(753, 530);
-            this.dataGridView1.TabIndex = 28;
+            this.dgv_qllh.Location = new System.Drawing.Point(412, 92);
+            this.dgv_qllh.Name = "dgv_qllh";
+            this.dgv_qllh.RowHeadersVisible = false;
+            this.dgv_qllh.RowHeadersWidth = 51;
+            this.dgv_qllh.RowTemplate.Height = 24;
+            this.dgv_qllh.Size = new System.Drawing.Size(753, 530);
+            this.dgv_qllh.TabIndex = 28;
             // 
             // Column1
             // 
@@ -124,6 +124,7 @@
             // 
             // txt_maID_qllh
             // 
+            this.txt_maID_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_maID_qllh.Location = new System.Drawing.Point(40, 56);
             this.txt_maID_qllh.Name = "txt_maID_qllh";
             this.txt_maID_qllh.Size = new System.Drawing.Size(277, 22);
@@ -158,6 +159,7 @@
             // 
             // txt_malop_qllh
             // 
+            this.txt_malop_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_malop_qllh.Location = new System.Drawing.Point(40, 132);
             this.txt_malop_qllh.Name = "txt_malop_qllh";
             this.txt_malop_qllh.Size = new System.Drawing.Size(277, 22);
@@ -293,6 +295,7 @@
             // 
             // txt__tenlop_qllh
             // 
+            this.txt__tenlop_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt__tenlop_qllh.Location = new System.Drawing.Point(40, 213);
             this.txt__tenlop_qllh.Name = "txt__tenlop_qllh";
             this.txt__tenlop_qllh.Size = new System.Drawing.Size(277, 22);
@@ -348,7 +351,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btn_xemdssv_qllh);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_qllh);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_quaylaitrangdau_qlsv);
@@ -364,7 +367,7 @@
             this.Name = "uc_qllh";
             this.Size = new System.Drawing.Size(1200, 750);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qllh)).EndInit();
             this.grb_ttsv.ResumeLayout(false);
             this.grb_ttsv.PerformLayout();
             this.ResumeLayout(false);
@@ -375,7 +378,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_qllh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_maID_qllh;
         private System.Windows.Forms.Label label1;
