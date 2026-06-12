@@ -137,7 +137,48 @@ namespace QuanLySinhVien
 
         private void btn_edit_qlsv_Click(object sender, EventArgs e)
         {
-            
+            //Lấy mã sinh viên hiện tại từ ô TextBox (đang bị khóa)
+            string maSV = txt_mssv.Text;
+
+            if (string.IsNullOrEmpty(maSV))
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên từ bảng trước khi sửa!");
+                return;
+            }
+
+            //Tìm kiếm sinh viên đó trong cơ sở dữ liệu qua databaseDataContext (db)
+            tbl_sinhvien sv = db.tbl_sinhviens.SingleOrDefault(s => s.id == maSV);
+
+            //Nếu tìm thấy thì tiến hành cập nhật dữ liệu mới
+            if (sv != null)
+            {
+                sv.hoten = txt_hvt.Text;
+                sv.ngaysinh = dtpicker_ngaysinh.Value; // Lấy giá trị ngày từ DateTimePicker
+                sv.gioitinh = cbb_gioitinh.Text;
+                sv.malop = cbb_lop.SelectedValue.ToString(); // Lấy mã lớp từ ComboBox
+
+                try
+                {
+                    //lưu mọi thay đổi xuống Database 
+                    db.SubmitChanges();
+                    MessageBox.Show("Cập nhật thông tin sinh viên thành công!");
+
+                    //Gọi lại hàm loadData() có sẵn để làm mới bảng DataGridView
+                    loadData();
+
+                    //mở khóa lại ô Mã SV để có thể nhập mới
+                    txt_mssv.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật dữ liệu: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy sinh viên có mã này trong hệ thống!");
+            }
+
         }
 
         private void btn_refresh_qlsv_Click(object sender, EventArgs e)
