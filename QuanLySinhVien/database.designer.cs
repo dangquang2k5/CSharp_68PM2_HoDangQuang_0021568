@@ -263,6 +263,8 @@ namespace QuanLySinhVien
 		
 		private string _malop;
 		
+		private System.Nullable<bool> _isDeleted;
+		
 		private EntityRef<tbl_lophoc> _tbl_lophoc;
 		
     #region Extensibility Method Definitions
@@ -279,6 +281,8 @@ namespace QuanLySinhVien
     partial void OnngaysinhChanged();
     partial void OnmalopChanging(string value);
     partial void OnmalopChanged();
+    partial void OnisDeletedChanging(System.Nullable<bool> value);
+    partial void OnisDeletedChanged();
     #endregion
 		
 		public tbl_sinhvien()
@@ -387,6 +391,26 @@ namespace QuanLySinhVien
 					this._malop = value;
 					this.SendPropertyChanged("malop");
 					this.OnmalopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDeleted", DbType="Bit")]
+		public System.Nullable<bool> isDeleted
+		{
+			get
+			{
+				return this._isDeleted;
+			}
+			set
+			{
+				if ((this._isDeleted != value))
+				{
+					this.OnisDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._isDeleted = value;
+					this.SendPropertyChanged("isDeleted");
+					this.OnisDeletedChanged();
 				}
 			}
 		}

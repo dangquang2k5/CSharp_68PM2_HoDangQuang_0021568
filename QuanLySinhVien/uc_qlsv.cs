@@ -23,20 +23,45 @@ namespace QuanLySinhVien
         private void uc_qlsv_Load(object sender, EventArgs e)
         {
             loadDSLH4CBB();
-            //code ở đây để load bảng dữ liệu
-            List<tbl_sinhvien> dSSV = db.tbl_sinhviens.ToList(); //lấy dữ liệu từ bảng sinh viên
-            dgv_qlsv.DataSource = dSSV; // đây nữa
+            List<tbl_sinhvien> dSSV = db.tbl_sinhviens
+                                   .Where(s => s.isDeleted == false || s.isDeleted == null)
+                                   .ToList();
+
+            // Tắt tự động tạo cột
+            dgv_qlsv.AutoGenerateColumns = false;
+
+
+            dgv_qlsv.DataSource = dSSV;
+
+ 
+
+
+            // THÊM 2 DÒNG NÀY ĐỂ CHỌN CẢ DÒNG VÀ CHỈ ĐỌC (da thao tác trên giao diện rồi nên đoạn này k cần)
+           // dgv_qlsv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dgv_qlsv.ReadOnly = true;
         }
 
 
         public void loadData() //tạo hàm loadData để load lại dữ liệu sau khi thêm sinh viên
         {
-            List<tbl_sinhvien> dSSV = db.tbl_sinhviens.ToList(); //lấy dữ liệu từ bảng sinh viên
-            dgv_qlsv.DataSource = dSSV; // đây nữa
+            List<tbl_sinhvien> dSSV = db.tbl_sinhviens
+                                            .Where(s => s.isDeleted == false || s.isDeleted == null)
+                                            .ToList();
+            dgv_qlsv.DataSource = dSSV;
 
         }
         private void btn_add_qlsv_Click(object sender, EventArgs e)
         {
+            string maSVMoi = txt_mssv.Text;
+            // KIỂM TRA TRÙNG MÃ SINH VIÊN
+            tbl_sinhvien kiemTraSV = db.tbl_sinhviens.SingleOrDefault(s => s.id == maSVMoi);
+            if (kiemTraSV != null)
+            {
+                MessageBox.Show("Mã sinh viên này đã tồn tại! Vui lòng nhập mã khác.");
+                return; // Dừng hàm lại, không chạy code thêm nữa
+            }
+
+
             //code ở đây để thêm sinh viên
 
             tbl_sinhvien sv = new tbl_sinhvien(); //tạo đối tượng sinh viên
@@ -52,6 +77,14 @@ namespace QuanLySinhVien
                 db.SubmitChanges();
                 MessageBox.Show("Thêm sinh viên thành công!");
                 loadData();
+
+                //ĐOẠN NÀY VÀO ĐỂ LÀM TRẮNG CÁC Ô NHẬP LIỆU:
+                txt_mssv.Text = "";
+                txt_hvt.Text = "";
+                cbb_gioitinh.SelectedIndex = -1;
+                dtpicker_ngaysinh.Value = DateTime.Now;
+                txt_mssv.Enabled = true; // Đảm bảo ô ID luôn mở để nhập tiếp
+
             }
             catch (Exception ex)
             {
@@ -68,6 +101,53 @@ namespace QuanLySinhVien
             cbb_lop.DataSource = dsLH; //đổ dữ liệu vào combobox lớp học
             cbb_lop.DisplayMember = "tenlop"; //hiển thị tên lớp học
             cbb_lop.ValueMember = "malop"; //giá trị là mã lớp học
+        }
+
+        private void dgv_qlsv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm tra để tránh lỗi khi click vào tiêu đề cột (RowIndex = -1)
+            if (e.RowIndex >= 0)
+            {
+                // Lấy ra dòng đang được chọn
+                //DataGridViewRow row = this.dgv_qlsv.Rows[e.RowIndex];
+                var row = dgv_qlsv.Rows[e.RowIndex];
+
+                // Đổ dữ liệu lên các Control tương ứng theo thứ tự cột
+                txt_mssv.Text = row.Cells[0].Value?.ToString();
+                txt_hvt.Text = row.Cells[1].Value?.ToString();
+                cbb_gioitinh.Text = row.Cells[2].Value?.ToString();
+                txt_mssv.Enabled = false; // Khóa ô Mã sinh viên để không cho sửa khi click vào bảng
+
+                // Xử lý riêng cho DateTimePicker (Ngày sinh)
+                if (row.Cells[3].Value != null && row.Cells[3].Value.ToString() != "")
+                {
+                    dtpicker_ngaysinh.Value = Convert.ToDateTime(row.Cells[3].Value);
+                }
+
+                // Xử lý riêng cho Combobox Lớp 
+                // Vì trong hàm loadDSLH4CBB bạn cài đặt ValueMember = "malop" nên ta gán SelectedValue
+                if (row.Cells[4].Value != null)
+                {
+                    cbb_lop.SelectedValue = row.Cells[4].Value.ToString();
+                }
+
+
+            }
+        }
+
+        private void btn_edit_qlsv_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_refresh_qlsv_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_del_qlsv_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

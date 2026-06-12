@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dgv_qllh = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_maID_qllh = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,20 +50,13 @@
             this.txt_ghichu_qllh = new System.Windows.Forms.TextBox();
             this.btn_search_qlsv = new System.Windows.Forms.Button();
             this.btn_xemdssv_qllh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qllh)).BeginInit();
             this.grb_ttsv.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(787, 350);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(10, 10);
-            this.dataGridView2.TabIndex = 29;
             // 
             // dgv_qllh
             // 
@@ -87,30 +75,6 @@
             this.dgv_qllh.RowTemplate.Height = 24;
             this.dgv_qllh.Size = new System.Drawing.Size(753, 530);
             this.dgv_qllh.TabIndex = 28;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Mã lớp";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tên lớp";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Ghi chú";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
             // 
             // label2
             // 
@@ -345,12 +309,39 @@
             this.btn_xemdssv_qllh.Text = "Xem danh sách sinh viên";
             this.btn_xemdssv_qllh.UseVisualStyleBackColor = false;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "Mã ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "malop";
+            this.Column2.HeaderText = "Mã lớp";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "tenlop";
+            this.Column3.HeaderText = "Tên lớp";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ghichu";
+            this.Column4.HeaderText = "Ghi chú";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            // 
             // uc_qllh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btn_xemdssv_qllh);
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dgv_qllh);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox1);
@@ -366,7 +357,7 @@
             this.Controls.Add(this.btn_search_qlsv);
             this.Name = "uc_qllh";
             this.Size = new System.Drawing.Size(1200, 750);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Load += new System.EventHandler(this.uc_qllh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qllh)).EndInit();
             this.grb_ttsv.ResumeLayout(false);
             this.grb_ttsv.PerformLayout();
@@ -376,8 +367,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dgv_qllh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_maID_qllh;

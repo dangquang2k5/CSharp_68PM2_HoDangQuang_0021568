@@ -47,7 +47,6 @@
             this.btn_quaylaitrangtruoc_qlsv = new System.Windows.Forms.Button();
             this.btn_chuyendentrangtiep_qlsv = new System.Windows.Forms.Button();
             this.btn_chuyendentrangcuoi_qlsv = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dgv_qlsv = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +57,6 @@
             this.btn_search_qlsv = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.grb_ttsv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +74,7 @@
             this.btn_refresh_qlsv.TabIndex = 17;
             this.btn_refresh_qlsv.Text = "Làm mới";
             this.btn_refresh_qlsv.UseVisualStyleBackColor = false;
+            this.btn_refresh_qlsv.Click += new System.EventHandler(this.btn_refresh_qlsv_Click);
             // 
             // btn_del_qlsv
             // 
@@ -91,6 +90,7 @@
             this.btn_del_qlsv.TabIndex = 18;
             this.btn_del_qlsv.Text = "Xóa";
             this.btn_del_qlsv.UseVisualStyleBackColor = false;
+            this.btn_del_qlsv.Click += new System.EventHandler(this.btn_del_qlsv_Click);
             // 
             // btn_edit_qlsv
             // 
@@ -106,6 +106,7 @@
             this.btn_edit_qlsv.TabIndex = 19;
             this.btn_edit_qlsv.Text = "Sửa";
             this.btn_edit_qlsv.UseVisualStyleBackColor = false;
+            this.btn_edit_qlsv.Click += new System.EventHandler(this.btn_edit_qlsv_Click);
             // 
             // btn_add_qlsv
             // 
@@ -284,16 +285,6 @@
             this.btn_chuyendentrangcuoi_qlsv.Text = ">>";
             this.btn_chuyendentrangcuoi_qlsv.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(798, 344);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(10, 10);
-            this.dataGridView2.TabIndex = 14;
-            // 
             // dgv_qlsv
             // 
             this.dgv_qlsv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -307,11 +298,14 @@
             this.Column5});
             this.dgv_qlsv.Location = new System.Drawing.Point(412, 92);
             this.dgv_qlsv.Name = "dgv_qlsv";
+            this.dgv_qlsv.ReadOnly = true;
             this.dgv_qlsv.RowHeadersVisible = false;
             this.dgv_qlsv.RowHeadersWidth = 51;
             this.dgv_qlsv.RowTemplate.Height = 24;
+            this.dgv_qlsv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_qlsv.Size = new System.Drawing.Size(753, 530);
             this.dgv_qlsv.TabIndex = 13;
+            this.dgv_qlsv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_qlsv_CellClick);
             // 
             // Column1
             // 
@@ -319,6 +313,7 @@
             this.Column1.HeaderText = "Mã SV";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
@@ -326,6 +321,7 @@
             this.Column2.HeaderText = "Họ và tên";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
@@ -333,6 +329,7 @@
             this.Column3.HeaderText = "Giới tính";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
@@ -340,6 +337,7 @@
             this.Column4.HeaderText = "Ngày sinh";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
@@ -347,6 +345,7 @@
             this.Column5.HeaderText = "Lớp";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // label6
             // 
@@ -392,7 +391,6 @@
             this.Controls.Add(this.btn_edit_qlsv);
             this.Controls.Add(this.btn_add_qlsv);
             this.Controls.Add(this.grb_ttsv);
-            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dgv_qlsv);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_search_qlsv);
@@ -402,7 +400,6 @@
             this.Load += new System.EventHandler(this.uc_qlsv_Load);
             this.grb_ttsv.ResumeLayout(false);
             this.grb_ttsv.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -430,7 +427,6 @@
         private System.Windows.Forms.Button btn_quaylaitrangtruoc_qlsv;
         private System.Windows.Forms.Button btn_chuyendentrangtiep_qlsv;
         private System.Windows.Forms.Button btn_chuyendentrangcuoi_qlsv;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dgv_qlsv;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_search_qlsv;
