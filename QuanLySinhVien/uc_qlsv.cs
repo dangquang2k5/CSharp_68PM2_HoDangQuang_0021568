@@ -221,7 +221,58 @@ namespace QuanLySinhVien
 
         private void btn_del_qlsv_Click(object sender, EventArgs e)
         {
-            
+            // Lấy mã sinh viên từ TextBox
+            string maSV = txt_mssv.Text;
+
+            if (string.IsNullOrEmpty(maSV))
+            {
+                MessageBox.Show("Vui lòng chọn một sinh viên từ bảng để xóa!");
+                return;
+            }
+
+            // Hiện hộp thoại hỏi xác nhận người dùng trước khi xóa
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa sinh viên này không?",
+                                              "Xác nhận xóa",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                // Tìm sinh viên đó trong CSDL
+                tbl_sinhvien sv = db.tbl_sinhviens.SingleOrDefault(s => s.id == maSV);
+
+                if (sv != null)
+                {
+                    // XÓA MỀM: Không dùng DeleteOnSubmit, chỉ chuyển trạng thái thành true
+                    sv.isDeleted = true;
+
+                    try
+                    {
+                        // Lưu thay đổi xuống DB
+                        db.SubmitChanges();
+                        MessageBox.Show("Xóa sinh viên thành công!");
+
+                        // Tải lại bảng dữ liệu (dòng vừa xóa sẽ tự biến mất vì đã bị lọc ở trên)
+                        loadData();
+
+                        // Xóa trắng các ô nhập liệu và mở khóa lại ô mã SV
+                        txt_mssv.Text = "";
+                        txt_hvt.Text = "";
+                        cbb_gioitinh.SelectedIndex = -1;
+                        dtpicker_ngaysinh.Value = DateTime.Now;
+                        txt_mssv.Enabled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi thực hiện xóa: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên này để xóa!");
+                }
+            }
+
         }
     }
 }
