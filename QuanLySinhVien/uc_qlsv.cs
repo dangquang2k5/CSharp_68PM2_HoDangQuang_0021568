@@ -207,7 +207,16 @@ namespace QuanLySinhVien
 
         private void btn_refresh_qlsv_Click(object sender, EventArgs e)
         {
-            
+            txt_mssv.Text = "";
+            txt_hvt.Text = "";
+            cbb_gioitinh.SelectedIndex = -1; // Bỏ chọn giới tính
+            dtpicker_ngaysinh.Value = DateTime.Now; // Reset ngày về hôm nay
+
+            // THÊM DÒNG NÀY: Mở khóa lại ô mã sinh viên để nhập mới
+            txt_mssv.Enabled = true;
+
+            loadData(); // Load lại bảng phòng trường hợp dữ liệu có thay đổi
+
         }
 
         private void btn_del_qlsv_Click(object sender, EventArgs e)
