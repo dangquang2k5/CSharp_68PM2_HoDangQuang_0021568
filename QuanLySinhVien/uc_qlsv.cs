@@ -52,6 +52,30 @@ namespace QuanLySinhVien
         }
         private void btn_add_qlsv_Click(object sender, EventArgs e)
         {
+            // KIỂM TRA DỮ LIỆU RỖNG 
+            if (string.IsNullOrWhiteSpace(txt_mssv.Text))
+            {
+                MessageBox.Show("Mã sinh viên không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_mssv.Focus(); // Đưa con trỏ chuột nhấp nháy lại ô nhập ID
+                return; // Dừng hàm ngay lập tức
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_hvt.Text))
+            {
+                MessageBox.Show("Họ và tên không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_hvt.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbb_gioitinh.Text))
+            {
+                MessageBox.Show("Vui lòng chọn giới tính!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbb_gioitinh.Focus();
+                return;
+            }
+
+
+
             string maSVMoi = txt_mssv.Text;
             // KIỂM TRA TRÙNG MÃ SINH VIÊN
             tbl_sinhvien kiemTraSV = db.tbl_sinhviens.SingleOrDefault(s => s.id == maSVMoi);
