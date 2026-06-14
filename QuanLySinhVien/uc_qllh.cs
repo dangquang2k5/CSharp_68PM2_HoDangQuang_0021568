@@ -262,5 +262,24 @@ namespace QuanLySinhVien
                 loadData();
             }
         }
+
+        private void btn_xemdssv_qllh_Click(object sender, EventArgs e)
+        {
+            //Lấy mã lớp hiện tại đang hiển thị trên TextBox
+            string maLop = txt_malop_qllh.Text.Trim();
+
+            //Kiểm tra xem người dùng đã chọn lớp nào chưa
+            if (string.IsNullOrEmpty(maLop))
+            {
+                MessageBox.Show("Vui lòng chọn một lớp học từ bảng để xem danh sách sinh viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            //Khởi tạo Form mới và TRUYỀN MÃ LỚP SANG
+            frm_danhsachsinhvien frm = new frm_danhsachsinhvien(maLop);
+
+            //Hiển thị Form (Dùng ShowDialog để bắt buộc người dùng đóng Form này mới quay lại được Form chính)
+            frm.ShowDialog();
+        }
     }
 }

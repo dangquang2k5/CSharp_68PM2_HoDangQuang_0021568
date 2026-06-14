@@ -354,6 +354,7 @@
             this.btn_xemdssv_qllh.TabIndex = 35;
             this.btn_xemdssv_qllh.Text = "Xem danh sách sinh viên";
             this.btn_xemdssv_qllh.UseVisualStyleBackColor = false;
+            this.btn_xemdssv_qllh.Click += new System.EventHandler(this.btn_xemdssv_qllh_Click);
             // 
             // lbl_sotrang_qllh
             // 

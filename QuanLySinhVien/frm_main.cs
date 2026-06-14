@@ -17,10 +17,21 @@ namespace QuanLySinhVien
             InitializeComponent();
         }
 
-
+        // Hàm này sẽ được gọi mỗi khi một menu item được click để reset màu nền của tất cả menu về mặc định
+        private void ResetMauMenu()
+        {
+            // SystemColors.Control là màu nền xám nhạt mặc định của thanh Menu
+            tstr_qlsv.BackColor = SystemColors.Control;
+            tstr_qllh.BackColor = SystemColors.Control;
+        }
 
         private void tstr_qlsv_Click(object sender, EventArgs e)
         {
+            // Làm tương tự cho tab Lớp học
+            ResetMauMenu();
+            tstr_qlsv.BackColor = Color.LightSkyBlue;
+
+
             uc_qlsv uc_qlsv = new uc_qlsv();
             pnl_main.Controls.Clear();
             pnl_main.Controls.Add(uc_qlsv);
@@ -28,6 +39,11 @@ namespace QuanLySinhVien
 
         private void tstr_qllh_Click(object sender, EventArgs e)
         {
+            // Làm tương tự cho tab Lớp học
+            ResetMauMenu();
+            tstr_qllh.BackColor = Color.LightSkyBlue;
+
+
             uc_qllh uc_qllh = new uc_qllh();
             pnl_main.Controls.Clear();
             pnl_main.Controls.Add(uc_qllh);
@@ -35,7 +51,8 @@ namespace QuanLySinhVien
 
         private void frm_main_Load(object sender, EventArgs e)
         {
-
+            //khi load form chính thì sẽ tự động click vào menu quản lý sinh viên để hiển thị giao diện quản lý sinh viên ngay
+            tstr_qlsv_Click(sender, e);
         }
     }
 }
