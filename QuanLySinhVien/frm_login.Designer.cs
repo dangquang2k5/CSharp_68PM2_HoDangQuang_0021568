@@ -95,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 319);
+            this.ClientSize = new System.Drawing.Size(736, 308);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_Username);
             this.Controls.Add(this.Password);
@@ -103,7 +103,7 @@
             this.Controls.Add(this.tieuDe);
             this.Controls.Add(this.btn_Login);
             this.Name = "frm_login";
-            this.Text = "Đăng nhập";
+            this.Text = "Hệ thống đăng nhập sinh viên";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,4 +119,3 @@
         private System.Windows.Forms.TextBox txt_Password;
     }
 }
-

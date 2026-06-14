@@ -54,5 +54,22 @@ namespace QuanLySinhVien
             //khi load form chính thì sẽ tự động click vào menu quản lý sinh viên để hiển thị giao diện quản lý sinh viên ngay
             tstr_qlsv_Click(sender, e);
         }
+
+        private void tstr_logout_Click(object sender, EventArgs e)
+        {
+            // 1. Hiện hộp thoại hỏi người dùng có chắc chắn muốn đăng xuất không
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?",
+                                              "Xác nhận đăng xuất",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+
+            // 2. Nếu người dùng chọn Yes
+            if (dr == DialogResult.Yes)
+            {
+                // Khởi động lại toàn bộ ứng dụng. 
+                // Lệnh này sẽ xóa sạch bộ nhớ tạm và quay về file Program.cs để mở lại frm_login
+                Application.Restart();
+            }
+        }
     }
 }

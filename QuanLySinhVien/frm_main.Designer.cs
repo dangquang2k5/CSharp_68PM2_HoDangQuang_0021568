@@ -66,6 +66,7 @@
             this.tstr_logout.Name = "tstr_logout";
             this.tstr_logout.Size = new System.Drawing.Size(91, 24);
             this.tstr_logout.Text = "Đăng xuất";
+            this.tstr_logout.Click += new System.EventHandler(this.tstr_logout_Click);
             // 
             // menuStrip1
             // 

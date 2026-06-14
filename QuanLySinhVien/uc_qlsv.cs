@@ -123,7 +123,7 @@ namespace QuanLySinhVien
             tbl_sinhvien sv = new tbl_sinhvien(); //tạo đối tượng sinh viên
             sv.id = txt_mssv.Text; //gán mã sinh viên từ textbox
             sv.hoten = txt_hvt.Text; //gán họ tên từ textbox
-            sv.ngaysinh = DateTime.Parse(dtpicker_ngaysinh.Text);
+            sv.ngaysinh = dtpicker_ngaysinh.Value;
             sv.gioitinh = cbb_gioitinh.Text; //gán giới tính từ combobox
             sv.malop = cbb_lop.SelectedValue.ToString(); //lấy mã lớp học từ combobox
 
