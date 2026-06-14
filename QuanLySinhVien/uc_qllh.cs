@@ -14,6 +14,8 @@ namespace QuanLySinhVien
     {
         databaseDataContext db = new databaseDataContext(); //thêm phần này 
 
+
+
         public uc_qllh()
         {
             InitializeComponent();

@@ -56,6 +56,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btn_search_qlsv = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_sotrang_qlsv = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.grb_ttsv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).BeginInit();
             this.SuspendLayout();
@@ -251,6 +253,7 @@
             this.btn_quaylaitrangdau_qlsv.TabIndex = 0;
             this.btn_quaylaitrangdau_qlsv.Text = "<<";
             this.btn_quaylaitrangdau_qlsv.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangdau_qlsv.Click += new System.EventHandler(this.btn_quaylaitrangdau_qlsv_Click);
             // 
             // btn_quaylaitrangtruoc_qlsv
             // 
@@ -262,6 +265,7 @@
             this.btn_quaylaitrangtruoc_qlsv.TabIndex = 1;
             this.btn_quaylaitrangtruoc_qlsv.Text = "<";
             this.btn_quaylaitrangtruoc_qlsv.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangtruoc_qlsv.Click += new System.EventHandler(this.btn_quaylaitrangtruoc_qlsv_Click);
             // 
             // btn_chuyendentrangtiep_qlsv
             // 
@@ -273,6 +277,7 @@
             this.btn_chuyendentrangtiep_qlsv.TabIndex = 1;
             this.btn_chuyendentrangtiep_qlsv.Text = ">";
             this.btn_chuyendentrangtiep_qlsv.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangtiep_qlsv.Click += new System.EventHandler(this.btn_chuyendentrangtiep_qlsv_Click);
             // 
             // btn_chuyendentrangcuoi_qlsv
             // 
@@ -284,6 +289,7 @@
             this.btn_chuyendentrangcuoi_qlsv.TabIndex = 0;
             this.btn_chuyendentrangcuoi_qlsv.Text = ">>";
             this.btn_chuyendentrangcuoi_qlsv.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangcuoi_qlsv.Click += new System.EventHandler(this.btn_chuyendentrangcuoi_qlsv_Click);
             // 
             // dgv_qlsv
             // 
@@ -370,6 +376,7 @@
             this.btn_search_qlsv.TabIndex = 12;
             this.btn_search_qlsv.Text = "Tìm kiếm";
             this.btn_search_qlsv.UseVisualStyleBackColor = false;
+            this.btn_search_qlsv.Click += new System.EventHandler(this.btn_search_qlsv_Click);
             // 
             // textBox1
             // 
@@ -378,10 +385,30 @@
             this.textBox1.Size = new System.Drawing.Size(277, 22);
             this.textBox1.TabIndex = 10;
             // 
+            // lbl_sotrang_qlsv
+            // 
+            this.lbl_sotrang_qlsv.AutoSize = true;
+            this.lbl_sotrang_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_sotrang_qlsv.Location = new System.Drawing.Point(758, 664);
+            this.lbl_sotrang_qlsv.Name = "lbl_sotrang_qlsv";
+            this.lbl_sotrang_qlsv.Size = new System.Drawing.Size(32, 20);
+            this.lbl_sotrang_qlsv.TabIndex = 21;
+            this.lbl_sotrang_qlsv.Text = "1/1";
+            this.lbl_sotrang_qlsv.Click += new System.EventHandler(this.lbl_sotrang_qlsv_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(771, 664);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
+            this.flowLayoutPanel1.TabIndex = 22;
+            // 
             // uc_qlsv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.lbl_sotrang_qlsv);
             this.Controls.Add(this.btn_quaylaitrangdau_qlsv);
             this.Controls.Add(this.btn_quaylaitrangtruoc_qlsv);
             this.Controls.Add(this.btn_chuyendentrangtiep_qlsv);
@@ -436,5 +463,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label lbl_sotrang_qlsv;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

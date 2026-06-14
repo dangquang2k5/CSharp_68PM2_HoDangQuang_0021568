@@ -14,6 +14,9 @@ namespace QuanLySinhVien
     public partial class uc_qlsv : UserControl
     {
         databaseDataContext db = new databaseDataContext(); //thêm phần này 
+        int currentPage = 1; // Trang hiện tại
+        int pageSize = 10;   // Số dòng trên 1 trang 
+        int totalPages = 0;  // Tổng số trang
 
         public uc_qlsv()
         {
@@ -23,31 +26,60 @@ namespace QuanLySinhVien
         private void uc_qlsv_Load(object sender, EventArgs e)
         {
             loadDSLH4CBB();
-            List<tbl_sinhvien> dSSV = db.tbl_sinhviens
-                                   .Where(s => s.isDeleted == false || s.isDeleted == null)
-                                   .ToList();
+
 
             // Tắt tự động tạo cột
             dgv_qlsv.AutoGenerateColumns = false;
 
-
-            dgv_qlsv.DataSource = dSSV;
-
  
-
+            loadData(); //gọi hàm loadData để load dữ liệu lên bảng khi form được load lên
 
             // THÊM 2 DÒNG NÀY ĐỂ CHỌN CẢ DÒNG VÀ CHỈ ĐỌC (da thao tác trên giao diện rồi nên đoạn này k cần)
-           // dgv_qlsv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            // dgv_qlsv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //dgv_qlsv.ReadOnly = true;
         }
 
 
         public void loadData() //tạo hàm loadData để load lại dữ liệu sau khi thêm sinh viên
         {
-            List<tbl_sinhvien> dSSV = db.tbl_sinhviens
-                                            .Where(s => s.isDeleted == false || s.isDeleted == null)
-                                            .ToList();
-            dgv_qlsv.DataSource = dSSV;
+            // Lấy từ khóa tìm kiếm (nếu có)
+            string tuKhoa = textBox1.Text.Trim().ToLower();
+
+            // Khởi tạo truy vấn: Lấy danh sách SV chưa bị xóa mềm
+            var query = db.tbl_sinhviens.Where(s => s.isDeleted == false || s.isDeleted == null);
+
+            // 3. Lọc theo từ khóa tìm kiếm (nếu ô text tìm kiếm không trống)
+            if (!string.IsNullOrEmpty(tuKhoa))
+            {
+                query = query.Where(s => s.id.ToLower().Contains(tuKhoa) || s.hoten.ToLower().Contains(tuKhoa));
+            }
+
+            // Tính toán tổng số trang
+            int totalRecords = query.Count();
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize); // Làm tròn lên (VD: 11 dòng / 10 = 1.1 -> 2 trang)
+
+            // Chặn lỗi: Nếu current page vượt quá giới hạn thì ép về chuẩn
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+
+
+            //hiển thị số trang trên label
+            if (totalPages == 0)
+            {
+                lbl_sotrang_qlsv.Text = "Trang 0 / 0"; // Trường hợp không có dữ liệu
+            }
+            else
+            {
+                lbl_sotrang_qlsv.Text = $"Trang {currentPage} / {totalPages}";
+            }
+
+            // HÂN TRANG BẰNG SKIP VÀ TAKE
+            var pagedData = query.Skip((currentPage - 1) * pageSize)
+                                 .Take(pageSize)
+                                 .ToList();
+
+            // đổ dữ liệu lên bảng
+            dgv_qlsv.DataSource = pagedData;
 
         }
         private void btn_add_qlsv_Click(object sender, EventArgs e)
@@ -272,6 +304,51 @@ namespace QuanLySinhVien
                     MessageBox.Show("Không tìm thấy sinh viên này để xóa!");
                 }
             }
+
+        }
+
+        private void btn_search_qlsv_Click(object sender, EventArgs e)
+        {
+            // Khi bấm tìm kiếm mới, bắt buộc phải ép về trang 1 để xem từ đầu
+            currentPage = 1;
+            loadData();
+        }
+
+        private void btn_quaylaitrangdau_qlsv_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            loadData();
+        }
+
+        private void btn_chuyendentrangcuoi_qlsv_Click(object sender, EventArgs e)
+        {
+            if (totalPages > 0)
+            {
+                currentPage = totalPages;
+                loadData();
+            }
+        }
+
+        private void btn_quaylaitrangtruoc_qlsv_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                loadData();
+            }
+        }
+
+        private void btn_chuyendentrangtiep_qlsv_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                loadData();
+            }
+        }
+
+        private void lbl_sotrang_qlsv_Click(object sender, EventArgs e)
+        {
 
         }
     }
