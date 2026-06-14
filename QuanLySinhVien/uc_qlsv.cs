@@ -347,9 +347,8 @@ namespace QuanLySinhVien
             }
         }
 
-        private void lbl_sotrang_qlsv_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
     }
 }

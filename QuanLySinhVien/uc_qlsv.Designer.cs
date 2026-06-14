@@ -394,7 +394,6 @@
             this.lbl_sotrang_qlsv.Size = new System.Drawing.Size(32, 20);
             this.lbl_sotrang_qlsv.TabIndex = 21;
             this.lbl_sotrang_qlsv.Text = "1/1";
-            this.lbl_sotrang_qlsv.Click += new System.EventHandler(this.lbl_sotrang_qlsv_Click);
             // 
             // flowLayoutPanel1
             // 

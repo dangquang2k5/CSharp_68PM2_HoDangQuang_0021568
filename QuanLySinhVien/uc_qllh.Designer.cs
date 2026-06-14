@@ -29,16 +29,20 @@
         private void InitializeComponent()
         {
             this.dgv_qllh = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_maID_qllh = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txt_malop_qllh = new System.Windows.Forms.TextBox();
-            this.btn_quaylaitrangdau_qlsv = new System.Windows.Forms.Button();
-            this.btn_quaylaitrangtruoc_qlsv = new System.Windows.Forms.Button();
-            this.btn_chuyendentrangtiep_qlsv = new System.Windows.Forms.Button();
-            this.btn_chuyendentrangcuoi_qlsv = new System.Windows.Forms.Button();
+            this.btn_quaylaitrangdau_qllh = new System.Windows.Forms.Button();
+            this.btn_quaylaitrangtruoc_qllh = new System.Windows.Forms.Button();
+            this.btn_chuyendentrangtiep_qllh = new System.Windows.Forms.Button();
+            this.btn_chuyendentrangcuoi_qllh = new System.Windows.Forms.Button();
             this.btn_refresh_qllh = new System.Windows.Forms.Button();
             this.btn_del_qllh = new System.Windows.Forms.Button();
             this.btn_edit_qllh = new System.Windows.Forms.Button();
@@ -48,12 +52,9 @@
             this.txt__tenlop_qllh = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_ghichu_qllh = new System.Windows.Forms.TextBox();
-            this.btn_search_qlsv = new System.Windows.Forms.Button();
+            this.btn_search_qllh = new System.Windows.Forms.Button();
             this.btn_xemdssv_qllh = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_sotrang_qllh = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_qllh)).BeginInit();
             this.grb_ttsv.SuspendLayout();
             this.SuspendLayout();
@@ -70,11 +71,46 @@
             this.Column4});
             this.dgv_qllh.Location = new System.Drawing.Point(412, 92);
             this.dgv_qllh.Name = "dgv_qllh";
+            this.dgv_qllh.ReadOnly = true;
             this.dgv_qllh.RowHeadersVisible = false;
             this.dgv_qllh.RowHeadersWidth = 51;
             this.dgv_qllh.RowTemplate.Height = 24;
+            this.dgv_qllh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_qllh.Size = new System.Drawing.Size(753, 530);
             this.dgv_qllh.TabIndex = 28;
+            this.dgv_qllh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_qllh_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "Mã ID";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "malop";
+            this.Column2.HeaderText = "Mã lớp";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "tenlop";
+            this.Column3.HeaderText = "Tên lớp";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ghichu";
+            this.Column4.HeaderText = "Ghi chú";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // label2
             // 
@@ -129,49 +165,53 @@
             this.txt_malop_qllh.Size = new System.Drawing.Size(277, 22);
             this.txt_malop_qllh.TabIndex = 0;
             // 
-            // btn_quaylaitrangdau_qlsv
+            // btn_quaylaitrangdau_qllh
             // 
-            this.btn_quaylaitrangdau_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quaylaitrangdau_qlsv.Location = new System.Drawing.Point(525, 653);
-            this.btn_quaylaitrangdau_qlsv.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_quaylaitrangdau_qlsv.Name = "btn_quaylaitrangdau_qlsv";
-            this.btn_quaylaitrangdau_qlsv.Size = new System.Drawing.Size(48, 48);
-            this.btn_quaylaitrangdau_qlsv.TabIndex = 21;
-            this.btn_quaylaitrangdau_qlsv.Text = "<<";
-            this.btn_quaylaitrangdau_qlsv.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangdau_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quaylaitrangdau_qllh.Location = new System.Drawing.Point(525, 653);
+            this.btn_quaylaitrangdau_qllh.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_quaylaitrangdau_qllh.Name = "btn_quaylaitrangdau_qllh";
+            this.btn_quaylaitrangdau_qllh.Size = new System.Drawing.Size(48, 48);
+            this.btn_quaylaitrangdau_qllh.TabIndex = 21;
+            this.btn_quaylaitrangdau_qllh.Text = "<<";
+            this.btn_quaylaitrangdau_qllh.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangdau_qllh.Click += new System.EventHandler(this.btn_quaylaitrangdau_qllh_Click);
             // 
-            // btn_quaylaitrangtruoc_qlsv
+            // btn_quaylaitrangtruoc_qllh
             // 
-            this.btn_quaylaitrangtruoc_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quaylaitrangtruoc_qlsv.Location = new System.Drawing.Point(573, 653);
-            this.btn_quaylaitrangtruoc_qlsv.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_quaylaitrangtruoc_qlsv.Name = "btn_quaylaitrangtruoc_qlsv";
-            this.btn_quaylaitrangtruoc_qlsv.Size = new System.Drawing.Size(35, 48);
-            this.btn_quaylaitrangtruoc_qlsv.TabIndex = 23;
-            this.btn_quaylaitrangtruoc_qlsv.Text = "<";
-            this.btn_quaylaitrangtruoc_qlsv.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangtruoc_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quaylaitrangtruoc_qllh.Location = new System.Drawing.Point(573, 653);
+            this.btn_quaylaitrangtruoc_qllh.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_quaylaitrangtruoc_qllh.Name = "btn_quaylaitrangtruoc_qllh";
+            this.btn_quaylaitrangtruoc_qllh.Size = new System.Drawing.Size(35, 48);
+            this.btn_quaylaitrangtruoc_qllh.TabIndex = 23;
+            this.btn_quaylaitrangtruoc_qllh.Text = "<";
+            this.btn_quaylaitrangtruoc_qllh.UseVisualStyleBackColor = true;
+            this.btn_quaylaitrangtruoc_qllh.Click += new System.EventHandler(this.btn_quaylaitrangtruoc_qllh_Click);
             // 
-            // btn_chuyendentrangtiep_qlsv
+            // btn_chuyendentrangtiep_qllh
             // 
-            this.btn_chuyendentrangtiep_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_chuyendentrangtiep_qlsv.Location = new System.Drawing.Point(957, 653);
-            this.btn_chuyendentrangtiep_qlsv.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_chuyendentrangtiep_qlsv.Name = "btn_chuyendentrangtiep_qlsv";
-            this.btn_chuyendentrangtiep_qlsv.Size = new System.Drawing.Size(35, 48);
-            this.btn_chuyendentrangtiep_qlsv.TabIndex = 24;
-            this.btn_chuyendentrangtiep_qlsv.Text = ">";
-            this.btn_chuyendentrangtiep_qlsv.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangtiep_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_chuyendentrangtiep_qllh.Location = new System.Drawing.Point(957, 653);
+            this.btn_chuyendentrangtiep_qllh.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_chuyendentrangtiep_qllh.Name = "btn_chuyendentrangtiep_qllh";
+            this.btn_chuyendentrangtiep_qllh.Size = new System.Drawing.Size(35, 48);
+            this.btn_chuyendentrangtiep_qllh.TabIndex = 24;
+            this.btn_chuyendentrangtiep_qllh.Text = ">";
+            this.btn_chuyendentrangtiep_qllh.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangtiep_qllh.Click += new System.EventHandler(this.btn_chuyendentrangtiep_qllh_Click);
             // 
-            // btn_chuyendentrangcuoi_qlsv
+            // btn_chuyendentrangcuoi_qllh
             // 
-            this.btn_chuyendentrangcuoi_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_chuyendentrangcuoi_qlsv.Location = new System.Drawing.Point(992, 653);
-            this.btn_chuyendentrangcuoi_qlsv.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_chuyendentrangcuoi_qlsv.Name = "btn_chuyendentrangcuoi_qlsv";
-            this.btn_chuyendentrangcuoi_qlsv.Size = new System.Drawing.Size(48, 48);
-            this.btn_chuyendentrangcuoi_qlsv.TabIndex = 22;
-            this.btn_chuyendentrangcuoi_qlsv.Text = ">>";
-            this.btn_chuyendentrangcuoi_qlsv.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangcuoi_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_chuyendentrangcuoi_qllh.Location = new System.Drawing.Point(992, 653);
+            this.btn_chuyendentrangcuoi_qllh.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_chuyendentrangcuoi_qllh.Name = "btn_chuyendentrangcuoi_qllh";
+            this.btn_chuyendentrangcuoi_qllh.Size = new System.Drawing.Size(48, 48);
+            this.btn_chuyendentrangcuoi_qllh.TabIndex = 22;
+            this.btn_chuyendentrangcuoi_qllh.Text = ">>";
+            this.btn_chuyendentrangcuoi_qllh.UseVisualStyleBackColor = true;
+            this.btn_chuyendentrangcuoi_qllh.Click += new System.EventHandler(this.btn_chuyendentrangcuoi_qllh_Click);
             // 
             // btn_refresh_qllh
             // 
@@ -186,6 +226,7 @@
             this.btn_refresh_qllh.TabIndex = 31;
             this.btn_refresh_qllh.Text = "Làm mới";
             this.btn_refresh_qllh.UseVisualStyleBackColor = false;
+            this.btn_refresh_qllh.Click += new System.EventHandler(this.btn_refresh_qllh_Click);
             // 
             // btn_del_qllh
             // 
@@ -200,6 +241,7 @@
             this.btn_del_qllh.TabIndex = 32;
             this.btn_del_qllh.Text = "Xóa";
             this.btn_del_qllh.UseVisualStyleBackColor = false;
+            this.btn_del_qllh.Click += new System.EventHandler(this.btn_del_qllh_Click);
             // 
             // btn_edit_qllh
             // 
@@ -214,6 +256,7 @@
             this.btn_edit_qllh.TabIndex = 33;
             this.btn_edit_qllh.Text = "Sửa";
             this.btn_edit_qllh.UseVisualStyleBackColor = false;
+            this.btn_edit_qllh.Click += new System.EventHandler(this.btn_edit_qllh_Click);
             // 
             // btn_add_qllh
             // 
@@ -228,6 +271,7 @@
             this.btn_add_qllh.TabIndex = 34;
             this.btn_add_qllh.Text = "Thêm";
             this.btn_add_qllh.UseVisualStyleBackColor = false;
+            this.btn_add_qllh.Click += new System.EventHandler(this.btn_add_qllh_Click);
             // 
             // grb_ttsv
             // 
@@ -277,24 +321,26 @@
             // 
             // txt_ghichu_qllh
             // 
+            this.txt_ghichu_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ghichu_qllh.Location = new System.Drawing.Point(40, 289);
             this.txt_ghichu_qllh.Name = "txt_ghichu_qllh";
             this.txt_ghichu_qllh.Size = new System.Drawing.Size(277, 22);
             this.txt_ghichu_qllh.TabIndex = 0;
             // 
-            // btn_search_qlsv
+            // btn_search_qllh
             // 
-            this.btn_search_qlsv.BackColor = System.Drawing.Color.Lime;
-            this.btn_search_qlsv.FlatAppearance.BorderSize = 0;
-            this.btn_search_qlsv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search_qlsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search_qlsv.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_search_qlsv.Location = new System.Drawing.Point(709, 30);
-            this.btn_search_qlsv.Name = "btn_search_qlsv";
-            this.btn_search_qlsv.Size = new System.Drawing.Size(120, 41);
-            this.btn_search_qlsv.TabIndex = 27;
-            this.btn_search_qlsv.Text = "Tìm kiếm";
-            this.btn_search_qlsv.UseVisualStyleBackColor = false;
+            this.btn_search_qllh.BackColor = System.Drawing.Color.Lime;
+            this.btn_search_qllh.FlatAppearance.BorderSize = 0;
+            this.btn_search_qllh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search_qllh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_search_qllh.Location = new System.Drawing.Point(709, 30);
+            this.btn_search_qllh.Name = "btn_search_qllh";
+            this.btn_search_qllh.Size = new System.Drawing.Size(120, 41);
+            this.btn_search_qllh.TabIndex = 27;
+            this.btn_search_qllh.Text = "Tìm kiếm";
+            this.btn_search_qllh.UseVisualStyleBackColor = false;
+            this.btn_search_qllh.Click += new System.EventHandler(this.btn_search_qllh_Click);
             // 
             // btn_xemdssv_qllh
             // 
@@ -309,52 +355,35 @@
             this.btn_xemdssv_qllh.Text = "Xem danh sách sinh viên";
             this.btn_xemdssv_qllh.UseVisualStyleBackColor = false;
             // 
-            // Column1
+            // lbl_sotrang_qllh
             // 
-            this.Column1.DataPropertyName = "id";
-            this.Column1.HeaderText = "Mã ID";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "malop";
-            this.Column2.HeaderText = "Mã lớp";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "tenlop";
-            this.Column3.HeaderText = "Tên lớp";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "ghichu";
-            this.Column4.HeaderText = "Ghi chú";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
+            this.lbl_sotrang_qllh.AutoSize = true;
+            this.lbl_sotrang_qllh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_sotrang_qllh.Location = new System.Drawing.Point(758, 664);
+            this.lbl_sotrang_qllh.Name = "lbl_sotrang_qllh";
+            this.lbl_sotrang_qllh.Size = new System.Drawing.Size(32, 20);
+            this.lbl_sotrang_qllh.TabIndex = 36;
+            this.lbl_sotrang_qllh.Text = "1/1";
             // 
             // uc_qllh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbl_sotrang_qllh);
             this.Controls.Add(this.btn_xemdssv_qllh);
             this.Controls.Add(this.dgv_qllh);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.btn_quaylaitrangdau_qlsv);
-            this.Controls.Add(this.btn_quaylaitrangtruoc_qlsv);
-            this.Controls.Add(this.btn_chuyendentrangtiep_qlsv);
-            this.Controls.Add(this.btn_chuyendentrangcuoi_qlsv);
+            this.Controls.Add(this.btn_quaylaitrangdau_qllh);
+            this.Controls.Add(this.btn_quaylaitrangtruoc_qllh);
+            this.Controls.Add(this.btn_chuyendentrangtiep_qllh);
+            this.Controls.Add(this.btn_chuyendentrangcuoi_qllh);
             this.Controls.Add(this.btn_refresh_qllh);
             this.Controls.Add(this.btn_del_qllh);
             this.Controls.Add(this.btn_edit_qllh);
             this.Controls.Add(this.btn_add_qllh);
             this.Controls.Add(this.grb_ttsv);
-            this.Controls.Add(this.btn_search_qlsv);
+            this.Controls.Add(this.btn_search_qllh);
             this.Name = "uc_qllh";
             this.Size = new System.Drawing.Size(1200, 750);
             this.Load += new System.EventHandler(this.uc_qllh_Load);
@@ -374,16 +403,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txt_malop_qllh;
-        private System.Windows.Forms.Button btn_quaylaitrangdau_qlsv;
-        private System.Windows.Forms.Button btn_quaylaitrangtruoc_qlsv;
-        private System.Windows.Forms.Button btn_chuyendentrangtiep_qlsv;
-        private System.Windows.Forms.Button btn_chuyendentrangcuoi_qlsv;
+        private System.Windows.Forms.Button btn_quaylaitrangdau_qllh;
+        private System.Windows.Forms.Button btn_quaylaitrangtruoc_qllh;
+        private System.Windows.Forms.Button btn_chuyendentrangtiep_qllh;
+        private System.Windows.Forms.Button btn_chuyendentrangcuoi_qllh;
         private System.Windows.Forms.Button btn_refresh_qllh;
         private System.Windows.Forms.Button btn_del_qllh;
         private System.Windows.Forms.Button btn_edit_qllh;
         private System.Windows.Forms.Button btn_add_qllh;
         private System.Windows.Forms.GroupBox grb_ttsv;
-        private System.Windows.Forms.Button btn_search_qlsv;
+        private System.Windows.Forms.Button btn_search_qllh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt__tenlop_qllh;
         private System.Windows.Forms.Label label3;
@@ -393,5 +422,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Label lbl_sotrang_qllh;
     }
 }
